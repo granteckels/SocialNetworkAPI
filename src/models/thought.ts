@@ -1,5 +1,5 @@
 import { Schema, model } from 'mongoose';
-import reactionSchema, { Reaction } from "./reaction"
+import reactionSchema, { Reaction } from "./reaction.js"
 
 interface Thought {
   thoughtText: string;
