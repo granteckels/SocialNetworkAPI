@@ -1,10 +1,29 @@
 import { Thought } from '../models/index.js';
 
 export default async function seedThoughts() {
-    const thought = new Thought({
-        thoughtText: "a thought",
-        username: "foobar",
-    })
+    await Thought.deleteMany();
 
-    await thought.save();
+    await Thought.insertMany([
+        {
+            thoughtText: "A thought",
+            username: "foo",
+            reactions: [{
+                reactionBody: "A reaction",
+                username: "bar",
+            }, {
+                reactionBody: "A second reaction",
+                username: "qux"
+            }]
+        }, {
+            thoughtText: "I think therefore I am",
+            username: "descartes",
+            reactions: [{
+                reactionBody: "God is a comedian playing to an audience that is too afriad to laugh",
+                username: "voltaire"
+            }, {
+                reactionBody: "Life is nasty, brutish, and short",
+                username: "hobbes"
+            }]
+        }
+    ])
 }
