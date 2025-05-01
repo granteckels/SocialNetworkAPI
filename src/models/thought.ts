@@ -5,7 +5,8 @@ interface Thought {
   thoughtText: string;
   createdAt: Date;
   username: string;
-  reactions: Reaction;
+  reactions: Reaction[];
+  reactionCount: number;
 }
 
 const thoughtSchema = new Schema<Thought>({
@@ -13,6 +14,14 @@ const thoughtSchema = new Schema<Thought>({
   createdAt: { type: Date, default: Date.now, required: true },
   username: { type: String, required: true },
   reactions: [reactionSchema]
+}, {
+  virtuals: {
+    reactionCount: {
+      get(this: Thought) {
+        return this.reactions.length;
+      }
+    }
+  }
 });
 
 const Thought = model('Thought', thoughtSchema);

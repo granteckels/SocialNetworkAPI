@@ -5,6 +5,7 @@ interface User {
   email: string;
   thoughts: Types.ObjectId[];
   friends: Types.ObjectId[];
+  friendcount: number;
 }
 
 const userSchema = new Schema<User>({
@@ -12,6 +13,14 @@ const userSchema = new Schema<User>({
   email: { type: String, required: true },
   thoughts: [{ type: Schema.Types.ObjectId, ref: 'Thought' }],
   friends: [{ type: Schema.Types.ObjectId, ref: 'User' }]
+}, {
+  virtuals: {
+    friendcount: {
+      get(this: User) {
+        return this.friends.length;
+      }
+    }
+  }
 });
 
 const User = model<User>('User', userSchema);
