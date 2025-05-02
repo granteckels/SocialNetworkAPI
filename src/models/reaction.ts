@@ -7,7 +7,7 @@ export interface Reaction {
 }
 
 export const reactionSchema = new Schema<Reaction>({
-  reactionBody: { type: String, required: true },
+  reactionBody: { type: String, required: true, maxlength: 280 },
   username: { type: String, required: true },
   createdAt: { type: Date, default: Date.now, required: true },
 });

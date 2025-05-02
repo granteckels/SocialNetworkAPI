@@ -10,7 +10,7 @@ interface Thought {
 }
 
 const thoughtSchema = new Schema<Thought>({
-  thoughtText: { type: String, required: true },
+  thoughtText: { type: String, required: true, maxlength: 280 },
   createdAt: { type: Date, default: Date.now, required: true },
   username: { type: String, required: true },
   reactions: [reactionSchema]
