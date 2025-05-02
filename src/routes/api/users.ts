@@ -58,7 +58,7 @@ router.put('/:userId', async (req: Request, res: Response) => {
 router.delete('/:userId', async (req: Request, res: Response) => {
     try {
         const deletedUser = await User.findByIdAndDelete(req.params.userId);
-        res.status(201).json(deletedUser)
+        res.json(deletedUser)
     } catch (err) {
         console.log("Error deleting user", err);
         res.status(500).send("Failed to delete user");
