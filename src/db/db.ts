@@ -1,13 +1,15 @@
 import mongoose from 'mongoose';
 
-const defaultDB = 'socialNetworkDB'
+const host = process.env.MONGODB_HOST || "127.0.0.1"
+const port = process.env.MONGODB_PORT || 27017
+const db = process.env.MONGODB_DB || "socialNetworkDB" 
 
 export async function connectDB() {
     try {
-        await mongoose.connect(`mongodb://127.0.0.1:27017/${defaultDB}`);
-        console.log(`Connected to MongoDB ${defaultDB}`);
+        await mongoose.connect(`mongodb://${host}:${port}/${db}`);
+        console.log(`Connected to MongoDB ${db}`);
     } catch (err) {
-        console.log(`Failed to connect to MongoDB ${defaultDB}`);
+        console.log(`Failed to connect to MongoDB ${db}`);
         console.log(err);
         process.exit(1);
     }
