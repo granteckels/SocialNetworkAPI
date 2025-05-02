@@ -5,9 +5,9 @@ export default async function seedUsers() {
 
     const sartre = await User.create({
         username: "sartre",
-        email: "sarter@france.com"
+        email: "sartre@france.com"
     })
-    const nietzsche = await User.create({
+    await User.create({
         username: "nietzsche",
         email: "nietzsche@germany.com"
     })
@@ -15,8 +15,8 @@ export default async function seedUsers() {
     const thoughtsDescartes = await Thought.findOne({ username: "descartes" }).exec();
     await User.create({
         username: "pascal",
-        email: "pascal@france.com",
+        email: "pascal@france",
         thoughts: [thoughtsDescartes!._id],
-        friends: [sartre._id, nietzsche._id]
+        friends: [sartre._id]
     })
 }
