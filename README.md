@@ -6,7 +6,7 @@ This app is an API for an example of a very simple social media app. It is run a
 
 ## Video Walkthrough
 
-https://app.screencastify.com/v3/watch/yo0IKWkGd8bn5NKfEV73
+https://drive.google.com/file/d/1BdmTYtLKW5wpynw_HOx6wj7Q2WBNRMBs/view?usp=sharing
 
 # Install
 
